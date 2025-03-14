@@ -24,6 +24,7 @@ Resources:
         - Key: Name
           Value: PublicSubnet1
 
+  # Public submet 2
   PublicSubnet2:
     Type: AWS::EC2::Subnet
     Properties:
