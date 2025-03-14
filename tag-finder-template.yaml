@@ -172,7 +172,7 @@ Resources:
           CidrIp: 0.0.0.0/0
           
   # Application Load Balancer
-  LoadBalancer:
+  TagFinderLoadBalancer:
     Type: AWS::ElasticLoadBalancingV2::LoadBalancer
     Properties:
       Name: tag-finder-load-balancer
@@ -184,6 +184,17 @@ Resources:
       Scheme: internet-facing
       Type: application
 
+  # Application Load Balancer Listener (for HTTP traffic)
+  TagFinderLoadBalancerListener:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties:
+      DefaultActions:
+        - Type: forward
+          TargetGroupArn: !Ref ECSLoadBalancerTargetGroup
+      LoadBalancerArn: !Ref TagFinderLoadBalancer
+      Port: 80
+      Protocol: HTTP
+
   ECSLoadBalancerTargetGroup:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
     Properties:
@@ -193,8 +204,6 @@ Resources:
       VpcId: !Ref VPC
       TargetType: ip
       HealthCheckPath: /health
-      LoadBalancerArns:
-        - !Ref LoadBalancer
 
   # ECS Service
   ECSService:
