@@ -200,7 +200,6 @@ Resources:
       EnableECSManagedTags: true
     DependsOn:
       - Listener
-      - ListenerRule
 
   # Application Load Balancer
   TagFinderLoadBalancer:
