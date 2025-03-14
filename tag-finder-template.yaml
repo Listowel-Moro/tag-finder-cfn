@@ -270,6 +270,32 @@ Resources:
           ToPort: 80
           CidrIp: 0.0.0.0/0
 
+  CodePipelineRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: codepipeline.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: CodePipelinePolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:*
+                  - codebuild:*
+                  - codecommit:*
+                  - codedeploy:*
+                  - ecs:*
+                  - ecr:*
+                  - cloudwatch:*
+                Resource: "*"
+
   # CodePipeline
   CodePipeline:
     Type: AWS::CodePipeline::Pipeline
@@ -311,6 +337,29 @@ Resources:
     Type: AWS::CodeDeploy::Application
     Properties:
       ComputePlatform: ECS
+
+  
+  CodeDeployRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: codedeploy.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: CodeDeployPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - ecs:*
+                  - codedeploy:*
+                Resource: "*"
+
 
   CodeDeployGroup:
     Type: AWS::CodeDeploy::DeploymentGroup
