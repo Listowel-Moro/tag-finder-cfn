@@ -123,7 +123,7 @@ Resources:
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AmazonS3FullAccess
 
-  # ECS Task Definition
+  # ECS Task Definition 
   ECSTaskDefinition:
     Type: AWS::ECS::TaskDefinition
     Properties:
