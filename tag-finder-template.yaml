@@ -375,3 +375,14 @@ Resources:
     Properties:
       ApplicationName: !Ref CodeDeployApplication
       ServiceRoleArn: !GetAtt CodeDeployRole.Arn
+
+  # CodeDeploy Deployment Group
+  CodeDeployGroup:
+    Type: AWS::CodeDeploy::DeploymentGroup
+    Properties:
+      ApplicationName: !Ref CodeDeployApplication
+      ServiceRoleArn: !GetAtt CodeDeployRole.Arn
+      ECSService:
+        ClusterName: !Ref TagFinderCluster
+        ServiceName: !Ref ECSService
+      DeploymentConfigName: CodeDeployDefault.ECSAllAtOnce
