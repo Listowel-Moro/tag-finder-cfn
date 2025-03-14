@@ -165,7 +165,7 @@ Resources:
       Name: tag-finder-target-group
       Port: 8080
       Protocol: HTTP
-      VpcId: !Ref VPCID
+      VpcId: !Ref VPC
       TargetType: ip
       HealthCheckPath: /health
 
