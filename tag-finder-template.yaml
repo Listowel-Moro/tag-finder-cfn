@@ -194,7 +194,7 @@ Resources:
       TargetType: ip
       HealthCheckPath: /health
       LoadBalancerArns:
-      - !Ref LoadBalancer
+        - !Ref LoadBalancer
 
   # ECS Service
   ECSService:
