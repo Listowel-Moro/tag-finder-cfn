@@ -141,12 +141,12 @@ Resources:
           PortMappings:
             - ContainerPort: 8080
               # HostPort: 80
-          LogConfiguration:
-            LogDriver: awslogs
-            Options:
-              awslogs-group: tag-finder-log-group
-              awslogs-region: !Ref AWS::Region
-              awslogs-stream-prefix: ecs
+          # LogConfiguration:
+          #   LogDriver: awslogs
+          #   Options:
+          #     awslogs-group: tag-finder-log-group
+          #     awslogs-region: !Ref AWS::Region
+          #     awslogs-stream-prefix: ecs
 
   ECSServiceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
