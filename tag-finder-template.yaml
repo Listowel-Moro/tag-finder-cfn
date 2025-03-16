@@ -213,7 +213,7 @@ Resources:
       TargetType: ip
       HealthCheckPath: /
       HealthCheckTimeoutSeconds: 60
-      HealthCheckIntervalSeconds: 30
+      HealthCheckIntervalSeconds: 70
       TargetGroupAttributes:
         - Key: deregistration_delay.timeout_seconds
           Value: "300"
