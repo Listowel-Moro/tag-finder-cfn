@@ -301,7 +301,7 @@ Resources:
         - '/'
         - - service
           - !Ref TagFinderCluster
-          - !GetAtt FargateService.Name
+          - !GetAtt ESCService.Name
       RoleARN: !GetAtt ECSAutoScalingRole.Arn
       ScalableDimension: ecs:service:DesiredCount
       ServiceNamespace: ecs
