@@ -297,7 +297,11 @@ Resources:
     Properties:
       MaxCapacity: 3
       MinCapacity: 1
-      ResourceId: !Sub "service/${TagFinderCluster}/${ECSService}"
+      ResourceId: !Join
+        - '/'
+        - - service
+          - !Ref TagFinderCluster
+          - !GetAtt FargateService.Name
       RoleARN: !GetAtt ECSAutoScalingRole.Arn
       ScalableDimension: ecs:service:DesiredCount
       ServiceNamespace: ecs
