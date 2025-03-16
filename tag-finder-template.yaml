@@ -137,8 +137,8 @@ Resources:
       Family: tag-finder-task
       RequiresCompatibilities:
         - FARGATE
-      Cpu: '3072'
-      Memory: '6144'
+      Cpu: '2048'
+      Memory: '4096'
       NetworkMode: awsvpc
       ExecutionRoleArn: !GetAtt TaskExecutionRole.Arn
       TaskRoleArn: !GetAtt S3AccessRole.Arn
