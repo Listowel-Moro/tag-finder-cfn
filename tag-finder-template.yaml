@@ -74,3 +74,72 @@ Resources:
     Properties:
       SubnetId: !Ref PublicSubnet2
       RouteTableId: !Ref PublicRouteTable
+
+  # ECS Cluster
+  TagFinderCluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: TagFinderCluster
+
+  # Task Execution Role
+  TaskExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - ecs-tasks.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonECSTaskExecutionRolePolicy
+
+  S3AccessRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - ecs-tasks.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonS3FullAccess
+
+  # Create log group
+  ECSLogGroup:
+  Type: AWS::Logs::LogGroup
+  Properties:
+    LogGroupName: tag-finder-log-group
+
+  # ECS Task Definition 
+  ECSTaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: tag-finder-task
+      RequiresCompatibilities:
+        - FARGATE
+      Cpu: '3072'
+      Memory: '6144'
+      NetworkMode: awsvpc
+      ExecutionRoleArn: !GetAtt TaskExecutionRole.Arn
+      TaskRoleArn: !GetAtt S3AccessRole.Arn
+      ContainerDefinitions:
+        - Name: tag-finder-container
+          Essential: true
+          Image: public.ecr.aws/z2w7p2s7/labs:latest
+          PortMappings:
+            - ContainerPort: 8080
+              # HostPort: 80
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-group: tag-finder-log-group
+              awslogs-region: !Ref AWS::Region
+              awslogs-stream-prefix: ecs
