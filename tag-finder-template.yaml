@@ -114,9 +114,9 @@ Resources:
 
   # Create log group
   ECSLogGroup:
-  Type: AWS::Logs::LogGroup
-  Properties:
-    LogGroupName: tag-finder-log-group
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: tag-finder-log-group
 
   # ECS Task Definition 
   ECSTaskDefinition:
