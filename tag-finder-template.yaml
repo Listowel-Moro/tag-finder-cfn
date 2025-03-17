@@ -219,6 +219,21 @@ Resources:
         - Key: deregistration_delay.timeout_seconds
           Value: "300"
 
+  ECSLoadBalancerTargetGroupTest:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      Name: ECS-TG-Test
+      VpcId: !Ref VPC
+      Port: 80
+      Protocol: HTTP
+      TargetType: ip
+      HealthCheckPath: "/"
+      HealthCheckIntervalSeconds: 30
+      HealthCheckTimeoutSeconds: 5
+      HealthyThresholdCount: 2
+      UnhealthyThresholdCount: 3
+
+
   # Application Load Balancer Listener (for HTTP traffic)
   Listener:
     Type: AWS::ElasticLoadBalancingV2::Listener
@@ -229,6 +244,17 @@ Resources:
       LoadBalancerArn: !Ref TagFinderLoadBalancer
       Port: 80
       Protocol: HTTP
+
+  TestListener:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties:
+      LoadBalancerArn: !Ref ECSLoadBalancerTargetGroup
+      Port: 8443
+      Protocol: HTTP
+      DefaultActions:
+        - Type: Forward
+          TargetGroupArn: !Ref ECSLoadBalancerTargetGroupTest
+
 
   # ECS Service
   ECSService:
@@ -440,9 +466,10 @@ Resources:
           TargetGroupPairInfoList:
             - TargetGroups:
                 - Name: !Ref ECSLoadBalancerTargetGroup
+                - Name: !Ref ECSLoadBalancerTargetGroupTest
               ProdTrafficRoute:
                 ListenerArns:
                   - !Ref Listener
-              # TestTrafficRoute:
-              #   ListenerArns:
-              #     - !Ref Listener
+              TestTrafficRoute:
+                ListenerArns:
+                  - !Ref TestListener
