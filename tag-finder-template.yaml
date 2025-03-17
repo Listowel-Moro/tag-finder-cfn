@@ -248,7 +248,7 @@ Resources:
   TestListener:
     Type: AWS::ElasticLoadBalancingV2::Listener
     Properties:
-      LoadBalancerArn: !Ref ECSLoadBalancerTargetGroup
+      LoadBalancerArn: !Ref TagFinderLoadBalancer
       Port: 8443
       Protocol: HTTP
       DefaultActions:
