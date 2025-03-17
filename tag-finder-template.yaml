@@ -376,7 +376,7 @@ Resources:
                   - cloudwatch:*
                 Resource: "*"
 
-  # CodePipeline
+  #CodePipeline
   CodePipeline:
     Type: AWS::CodePipeline::Pipeline
     Properties:
