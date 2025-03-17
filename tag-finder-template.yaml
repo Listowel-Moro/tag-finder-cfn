@@ -418,7 +418,7 @@ Resources:
       Properties:
         ApplicationName: !Ref CodeDeployApplication
         ServiceRoleArn: !GetAtt CodeDeployRole.Arn
-        ECSService:
+        ECSServices:
           ClusterName: !Ref TagFinderCluster
           ServiceName: !Ref ECSService
         DeploymentConfigName: CodeDeployDefault.ECSAllAtOnce
