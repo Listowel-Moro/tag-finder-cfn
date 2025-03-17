@@ -394,11 +394,11 @@ Resources:
               ActionTypeId:
                 Category: Source
                 Owner: AWS
-                Provider: ECR
+                Provider: S3
                 Version: '1'
               Configuration:
-                RepositoryName: labs
-                ImageTag: latest
+                S3Bucket: tag-finder-configs
+                S3ObjectKey: taskdef.json
               OutputArtifacts:
                 - Name: SourceOutput
         - Name: Deploy
