@@ -237,6 +237,8 @@ Resources:
       Cluster: !Ref TagFinderCluster
       TaskDefinition: !Ref ECSTaskDefinition
       LaunchType: FARGATE
+      DeploymentController:
+        Type: CODE_DEPLOY
       SchedulingStrategy: REPLICA
       DesiredCount: 1
       HealthCheckGracePeriodSeconds: 60
