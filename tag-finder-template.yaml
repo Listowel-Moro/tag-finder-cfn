@@ -443,6 +443,6 @@ Resources:
               ProdTrafficRoute:
                 ListenerArns:
                   - !Ref Listener
-              TestTrafficRoute:
-                ListenerArns:
-                  - !Ref Listener
+              # TestTrafficRoute:
+              #   ListenerArns:
+              #     - !Ref Listener
