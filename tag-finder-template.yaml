@@ -379,11 +379,12 @@ Resources:
   # CodePipeline
   CodePipeline:
     Type: AWS::CodePipeline::Pipeline
+    Name: TagFinderCodePipeline
     Properties:
       RoleArn: !GetAtt CodePipelineRole.Arn
       ArtifactStore:
         Type: S3
-        Location: tag-finder-s3
+        Location: tag-finder-configs
       Stages:
         - Name: Source
           Actions:
@@ -409,6 +410,8 @@ Resources:
               Configuration:
                 ApplicationName: !Ref CodeDeployApplication
                 DeploymentGroupName: !Ref CodeDeployGroup
+                TaskDefinitionTemplateArtifact: SourceOutput
+                AppSpecTemplateArtifact: SourceOutput
               InputArtifacts:
                 - Name: SourceOutput
 
