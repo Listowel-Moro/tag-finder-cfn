@@ -252,7 +252,7 @@ Resources:
       Port: 8443
       Protocol: HTTP
       DefaultActions:
-        - Type: Forward
+        - Type: forward
           TargetGroupArn: !Ref ECSLoadBalancerTargetGroupTest
 
 
