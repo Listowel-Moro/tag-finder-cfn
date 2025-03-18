@@ -482,8 +482,8 @@ Resources:
         LoadBalancerInfo:
           TargetGroupPairInfoList:
             - TargetGroups:
-                - Name: !Ref ECSLoadBalancerTargetGroup
-                - Name: !Ref ECSLoadBalancerTargetGroupTest
+                - Name: Main-TG
+                - Name: Test-TG
               ProdTrafficRoute:
                 ListenerArns:
                   - !Ref Listener
