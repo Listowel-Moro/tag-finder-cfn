@@ -383,7 +383,7 @@ Resources:
       RoleArn: !GetAtt CodePipelineRole.Arn
       Tags:
         - Key: Name
-          Value: TagFinderCodePipeline
+          Value: TagFinderPipeline
       ArtifactStore:
         Type: S3
         Location: tag-finder-configs
