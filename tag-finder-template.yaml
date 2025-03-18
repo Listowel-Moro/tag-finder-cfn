@@ -451,7 +451,7 @@ Resources:
                   - ecs:*
                   - codedeploy:*
                   - iam:*
-                  - AmazonElasticLoadBalancingV2:*
+                  - elasticloadbalancing:*
                   - s3:*
                   - cloudwatch:*
                 Resource: "*"
