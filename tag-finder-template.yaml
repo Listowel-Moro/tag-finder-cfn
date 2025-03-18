@@ -398,7 +398,7 @@ Resources:
                 Version: '1'
               Configuration:
                 S3Bucket: tag-finder-configs
-                S3ObjectKey: taskdef.json
+                S3ObjectKey: deploy-files/
               OutputArtifacts:
                 - Name: SourceOutput
         - Name: Deploy
