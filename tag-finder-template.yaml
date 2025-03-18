@@ -441,8 +441,6 @@ Resources:
             Principal:
               Service: codedeploy.amazonaws.com
             Action: sts:AssumeRole
-      ManagedPolicyArns:
-        - arn:aws:iam::aws:policy/service-role/AWSCodeDeployRoleForECS
       Policies:
         - PolicyName: CodeDeployPolicy
           PolicyDocument:
