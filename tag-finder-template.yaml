@@ -375,6 +375,10 @@ Resources:
                   - ecr:*
                   - cloudwatch:*
                 Resource: "*"
+              - Effect: Allow
+                Action:
+                  - iam:PassRole
+                Resource: "*"
 
   # CodePipeline
   CodePipeline:
