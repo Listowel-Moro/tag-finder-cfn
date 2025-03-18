@@ -207,8 +207,8 @@ Resources:
   ECSLoadBalancerTargetGroup:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
     Properties:
-      Name: tag-finder-target-group
-      Port: 8080
+      Name: tf-tg
+      Port: 80
       Protocol: HTTP
       VpcId: !Ref VPC
       TargetType: ip
