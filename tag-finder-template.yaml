@@ -452,6 +452,10 @@ Resources:
                 Action:
                   - ecs:*
                   - codedeploy:*
+                  - iam:*
+                  - AmazonElasticLoadBalancingV2:*
+                  - s3:*
+                  - cloudwatch:*
                 Resource: "*"
 
 
