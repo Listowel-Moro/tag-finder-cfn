@@ -207,7 +207,7 @@ Resources:
   ECSLoadBalancerTargetGroup:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
     Properties:
-      Name: tag-finder-target-group
+      Name: Main-TG
       Port: 80
       Protocol: HTTP
       VpcId: !Ref VPC
@@ -222,7 +222,7 @@ Resources:
   ECSLoadBalancerTargetGroupTest:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
     Properties:
-      Name: ECS-TG-Test
+      Name: Test-TG
       VpcId: !Ref VPC
       Port: 80
       Protocol: HTTP
