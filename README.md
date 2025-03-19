@@ -1,7 +1,7 @@
 ### **TagFinder CloudFormation Template**
 
 #### **Overview**
-This repository contains an **AWS CloudFormation template** that provisions the entire infrastructure required to run the (**TagFinder web application**)[https://github.com/Listowel-Moro/tag-finder]
+This repository contains an **AWS CloudFormation template** that provisions the entire infrastructure required to run the  [**TagFinder web application**](https://github.com/Listowel-Moro/tag-finder)
 The repository is integrated with **AWS GitSync**, ensuring that any updates to the template automatically trigger the **CloudFormation stack update**.
 
 ---
